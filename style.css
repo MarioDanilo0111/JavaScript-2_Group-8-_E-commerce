@@ -8,7 +8,7 @@
 /* --- General Rules --- */
 
 /* Set max-width of page content to be 1500px by wrapping all HTML-content inside a div which is direct child of <body> */
-.gbl-container.body {
+.custom-width-wrapper {
   max-width: 1500px;
   margin: 0 auto 0;
 }
@@ -35,16 +35,25 @@
 
 /* --- Banner --- */
 .banner-container {
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
   padding: 1%;
-  height: 100%;
 }
 .banner-sub.media {
   display: flex;
+  width: 100%;
+  align-items: center;
   justify-content: center;
+  height: 60vh;
+  background: url("https://images.unsplash.com/photo-1481437156560-3205f6a55735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80")
+    no-repeat;
+  background-size: cover;
+  background-position: bottom;
 }
-.banner-sub.media img {
-  display: block;
-  width: 70%;
+
+.banner-text {
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
 }
-/* ToDo Banner: Add mediaQuery so img takes up more space when on smaller screens, maybe remove padding? */
