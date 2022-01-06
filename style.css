@@ -14,6 +14,24 @@
 }
 
 /* --- Navbar --- */
+/* Set Navbar background, override with !important */
+#custom-style {
+  background-color: rgb(251, 244, 222) !important;
+}
+
+/* Custom Styling for Navbar Search Button */
+.btn-nav-search {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  background-color: white;
+}
+
+/* Added space-around on navbar content */
+.navbar-nav {
+  justify-content: flex-end;
+  width: 100%;
+}
 
 /* --- Banner --- */
 .banner-container {
