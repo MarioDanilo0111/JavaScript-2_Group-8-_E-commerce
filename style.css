@@ -1,0 +1,13 @@
+/* --- Global Rules --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set max-width of page content to be 1500px */
+.gbl-container.body {
+  max-width: 1500px;
+  margin: 0 auto 0;
+}
+/* --- Navbar --- */
