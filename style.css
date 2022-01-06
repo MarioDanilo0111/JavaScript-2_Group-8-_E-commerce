@@ -34,6 +34,7 @@
 }
 
 /* --- Banner --- */
+/* TODO: CHANGE ALL CLASSES WITH BANNER TO HERO */
 .banner-container {
   display: flex;
   justify-content: center;
@@ -50,10 +51,12 @@
     no-repeat;
   background-size: cover;
   background-position: bottom;
+  /* Todo: Change Color-Temp of Image to make Banner Text more readable */
 }
 
 .banner-text {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 2.5rem;
   text-align: center;
+  text-shadow: 0px 0px 16px rgb(0, 0, 0);
 }
