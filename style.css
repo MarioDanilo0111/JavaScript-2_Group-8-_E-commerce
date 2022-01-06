@@ -5,9 +5,12 @@
   padding: 0;
 }
 
-/* Set max-width of page content to be 1500px */
+/* --- General Rules --- */
+
+/* Set max-width of page content to be 1500px by wrapping all HTML-content inside a div which is direct child of <body> */
 .gbl-container.body {
   max-width: 1500px;
   margin: 0 auto 0;
 }
+
 /* --- Navbar --- */
