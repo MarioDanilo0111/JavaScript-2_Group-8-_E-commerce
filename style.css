@@ -14,3 +14,19 @@
 }
 
 /* --- Navbar --- */
+
+/* --- Banner --- */
+.banner-container {
+  margin-top: 10px;
+  padding: 1%;
+  height: 100%;
+}
+.banner-sub.media {
+  display: flex;
+  justify-content: center;
+}
+.banner-sub.media img {
+  display: block;
+  width: 70%;
+}
+/* ToDo Banner: Add mediaQuery so img takes up more space when on smaller screens, maybe remove padding? */
