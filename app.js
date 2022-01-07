@@ -19,7 +19,7 @@ const proDatabase = [
   },
   {
     id: 3,
-    name: "Nike Tshirt",
+    name: "Nike Shoe",
     price: 200,
     category: "Activewear",
     gender: "unisex",
@@ -83,24 +83,62 @@ const proDatabase = [
 ];
 const cartNum = document.querySelector(".cart-length");
 const productContainer = document.querySelector(".grid-container");
+const searchBar = document.querySelector("[data-search]");
+//Variables
+const shoppingCart = [];
+let searchQuery;
+
+//Search Function?
+document.querySelector("[data-start-search]").addEventListener("click", (e) => {
+  e.preventDefault();
+  searchQuery = searchBar.value;
+  productContainer.innerHTML = "";
+  renderItems();
+});
+
+function renderItems() {
+  proDatabase
+    .filter((item) => item.name.match(searchQuery))
+    .forEach((obj) => {
+      productContainer.innerHTML += `
+      <div class="grid-item" data-id=${obj.id}>
+      <img src="${obj.img}" alt="${obj.name} ${obj.gender}" srcset="">
+      <p class=${obj.id}>${obj.name}</p>
+      <p>${obj.price}</p>
+      <a href="#">Details</a><button data-buy data-id=${obj.id}>Buy</button>
+      </div>`;
+    });
+}
 
 // Create Product HTML-templae when on product page
 if (window.location.pathname.includes("/product-page.html")) {
   console.log("You are on Product Page, loading products.");
-  proDatabase.forEach((obj) => {
-    /*    console.log(`${obj}`); */
-    productContainer.innerHTML += `
-      <div class="grid-item grid-item-${obj.id}">
-      <img src="${obj.img}" alt="${obj.name} ${obj.gender}" srcset="">
-      <p class=${obj.id}>${obj.name}</p>
-      <a href="#">Details</a>
-      </div>`;
-  });
+  renderItems();
 } else {
   console.log("Your are not on Product Page");
 }
 
-// Shopping Cart Display Number Func
-/* addEventListener("click", () => {
-  cartNum.innerHTML = `${proDatabase.length}`;
-}); */
+//Selected Grid Items to implement for later usage
+const productItems = document.querySelectorAll(".grid-item");
+const buyButtons = document.querySelectorAll("[data-buy]");
+
+//For each div with product information, add a event
+buyButtons.forEach((item) => {
+  item.addEventListener("click", () => {
+    const found = proDatabase.find(
+      (el) => el.id == item.getAttribute("data-id")
+    );
+    console.log(found);
+    shoppingCart.push(found);
+    cartNum.innerHTML = `${shoppingCart.length}`;
+  });
+});
+
+productItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    const found = proDatabase.find(
+      (el) => el.id == item.getAttribute("data-id")
+    );
+    console.log(found);
+  });
+});
