@@ -84,17 +84,11 @@ const proDatabase = [
 const cartNum = document.querySelector(".cart-length");
 const productContainer = document.querySelector(".grid-container");
 const searchBar = document.querySelector("[data-search]");
+const productItems = document.querySelectorAll(".grid-item");
+const buyButtons = document.querySelectorAll("[data-buy]");
 //Variables
 const shoppingCart = [];
 let searchQuery;
-
-//Search Function?
-document.querySelector("[data-start-search]").addEventListener("click", (e) => {
-  e.preventDefault();
-  searchQuery = searchBar.value;
-  productContainer.innerHTML = "";
-  renderItems();
-});
 
 function renderItems() {
   proDatabase
@@ -118,9 +112,13 @@ if (window.location.pathname.includes("/product-page.html")) {
   console.log("Your are not on Product Page");
 }
 
-//Selected Grid Items to implement for later usage
-const productItems = document.querySelectorAll(".grid-item");
-const buyButtons = document.querySelectorAll("[data-buy]");
+//Search Function?
+document.querySelector("[data-start-search]").addEventListener("click", (e) => {
+  e.preventDefault();
+  searchQuery = searchBar.value;
+  productContainer.innerHTML = "";
+  renderItems();
+});
 
 //For each div with product information, add a event
 buyButtons.forEach((item) => {
