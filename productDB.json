@@ -1,76 +1,74 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "name": "Nike Tshirt",
-      "price": 200,
-      "category": "Activewear",
-      "gender": "unisex",
-      "brand": "Nike"
-    },
-    {
-      "id": 2,
-      "name": "Adidas Sweatpants",
-      "price": 149,
-      "category": "Sportswear",
-      "gender": "Male",
-      "brand": "Adidas"
-    },
-    {
-      "id": 3,
-      "name": "Nike Tshirt",
-      "price": 200,
-      "category": "Activewear",
-      "gender": "unisex",
-      "brand": "Nike"
-    },
-    {
-      "id": 4,
-      "name": "Adidas Sweatpants",
-      "price": 149,
-      "category": "Sportswear",
-      "gender": "Male",
-      "brand": "Adidas"
-    },
-    {
-      "id": 5,
-      "name": "Nike Tshirt",
-      "price": 200,
-      "category": "Activewear",
-      "gender": "unisex",
-      "brand": "Nike"
-    },
-    {
-      "id": 6,
-      "name": "Adidas Sweatpants",
-      "price": 149,
-      "category": "Sportswear",
-      "gender": "Male",
-      "brand": "Adidas"
-    },
-    {
-      "id": 7,
-      "name": "Nike Tshirt",
-      "price": 200,
-      "category": "Activewear",
-      "gender": "unisex",
-      "brand": "Nike"
-    },
-    {
-      "id": 8,
-      "name": "Adidas Sweatpants",
-      "price": 149,
-      "category": "Sportswear",
-      "gender": "Male",
-      "brand": "Adidas"
-    },
-    {
-      "id": 9,
-      "name": "Adidas Sweatpants",
-      "price": 139,
-      "category": "Sportswear",
-      "gender": "Male",
-      "brand": "Rebook"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "Nike Tshirt",
+    "price": 200,
+    "category": "Activewear",
+    "gender": "unisex",
+    "brand": "Nike"
+  },
+  {
+    "id": 2,
+    "name": "Adidas Sweatpants",
+    "price": 149,
+    "category": "Sportswear",
+    "gender": "Male",
+    "brand": "Adidas"
+  },
+  {
+    "id": 3,
+    "name": "Nike Tshirt",
+    "price": 200,
+    "category": "Activewear",
+    "gender": "unisex",
+    "brand": "Nike"
+  },
+  {
+    "id": 4,
+    "name": "Adidas Sweatpants",
+    "price": 149,
+    "category": "Sportswear",
+    "gender": "Male",
+    "brand": "Adidas"
+  },
+  {
+    "id": 5,
+    "name": "Nike Tshirt",
+    "price": 200,
+    "category": "Activewear",
+    "gender": "unisex",
+    "brand": "Nike"
+  },
+  {
+    "id": 6,
+    "name": "Adidas Sweatpants",
+    "price": 149,
+    "category": "Sportswear",
+    "gender": "Male",
+    "brand": "Adidas"
+  },
+  {
+    "id": 7,
+    "name": "Nike Tshirt",
+    "price": 200,
+    "category": "Activewear",
+    "gender": "unisex",
+    "brand": "Nike"
+  },
+  {
+    "id": 8,
+    "name": "Adidas Sweatpants",
+    "price": 149,
+    "category": "Sportswear",
+    "gender": "Male",
+    "brand": "Adidas"
+  },
+  {
+    "id": 9,
+    "name": "Adidas Sweatpants",
+    "price": 139,
+    "category": "Sportswear",
+    "gender": "Male",
+    "brand": "Rebook"
+  }
+]
