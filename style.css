@@ -47,7 +47,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  background: url("https://images.unsplash.com/photo-1481437156560-3205f6a55735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80")
+  background: url('https://images.unsplash.com/photo-1481437156560-3205f6a55735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80')
     no-repeat;
   background-size: cover;
   background-position: bottom;
@@ -77,21 +77,30 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 30%);
-  justify-content: space-around;
-  width: 100%;
-  height: 100vh;
-  background-color: rgb(238, 238, 238);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  padding: 30px;
 }
 
-/* Grid Item Content Properties */
+@media (max-width: 900px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 .grid-item {
   border: 1px solid red;
-  background: lightblue;
-  height: 220px;
-  font-weight: bold;
-  font-size: clamp(0.8rem, -0.875rem + 5.333vw, 1.5rem);
+  border-radius: 5px;
+  overflow: hidden;
   text-align: center;
+  font-weight: bold;
+  font-size: clamp(0.8rem, -0.575rem + 5.333vw, 1.5rem);
 }
 
 /* Grid Item Images */
@@ -100,4 +109,40 @@
   height: 50%;
   width: 100%;
   object-fit: contain;
+}
+
+/* Modal for product details */
+
+.modal-container {
+  display: none;
+  z-index: 0;
+  padding: 1%;
+  position: fixed;
+  border: 1px solid rgb(144, 144, 144);
+  border-radius: 5px;
+  background-color: rgba(168, 168, 168, 0.561);
+  width: 100%;
+  height: 100vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  width: 80%;
+  height: 50%;
+  background-color: white;
+  border: 1px solid blue;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+.modal.active,
+.modal.active {
+  display: block;
 }

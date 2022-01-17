@@ -1,98 +1,98 @@
 const proDatabase = [
   {
     id: 1,
-    name: "Nike Tshirt",
+    name: 'Nike Tshirt',
     price: 200,
-    category: "Activewear",
-    gender: "unisex",
-    brand: "Nike",
-    img: "./img/shoe.jpg",
+    category: 'Activewear',
+    gender: 'unisex',
+    brand: 'Nike',
+    img: './img/shoe.jpg',
   },
   {
     id: 2,
-    name: "Adidas Sweatpants",
+    name: 'Adidas Sweatpants',
     price: 149,
-    category: "Sportswear",
-    gender: "Male",
-    brand: "Adidas",
-    img: "./img/shoe.jpg",
+    category: 'Sportswear',
+    gender: 'Male',
+    brand: 'Adidas',
+    img: './img/shoe.jpg',
   },
   {
     id: 3,
-    name: "Nike Shoe",
+    name: 'Nike Shoe',
     price: 200,
-    category: "Activewear",
-    gender: "unisex",
-    brand: "Nike",
-    img: "./img/shoe.jpg",
+    category: 'Activewear',
+    gender: 'unisex',
+    brand: 'Nike',
+    img: './img/shoe.jpg',
   },
   {
     id: 4,
-    name: "Adidas Sweatpants",
+    name: 'Adidas Sweatpants',
     price: 149,
-    category: "Sportswear",
-    gender: "Male",
-    brand: "Adidas",
-    img: "./img/shoe.jpg",
+    category: 'Sportswear',
+    gender: 'Male',
+    brand: 'Adidas',
+    img: './img/shoe.jpg',
   },
   {
     id: 5,
-    name: "Nike Tshirt",
+    name: 'Nike Tshirt',
     price: 200,
-    category: "Activewear",
-    gender: "unisex",
-    brand: "Nike",
-    img: "./img/shoe.jpg",
+    category: 'Activewear',
+    gender: 'unisex',
+    brand: 'Nike',
+    img: './img/shoe.jpg',
   },
   {
     id: 6,
-    name: "Adidas Sweatpants",
+    name: 'Adidas Sweatpants',
     price: 149,
-    category: "Sportswear",
-    gender: "Male",
-    brand: "Adidas",
-    img: "./img/shoe.jpg",
+    category: 'Sportswear',
+    gender: 'Male',
+    brand: 'Adidas',
+    img: './img/shoe.jpg',
   },
   {
     id: 7,
-    name: "Nike Tshirt",
+    name: 'Nike Tshirt',
     price: 200,
-    category: "Activewear",
-    gender: "unisex",
-    brand: "Nike",
-    img: "./img/shoe.jpg",
+    category: 'Activewear',
+    gender: 'unisex',
+    brand: 'Nike',
+    img: './img/shoe.jpg',
   },
   {
     id: 8,
-    name: "Adidas Sweatpants",
+    name: 'Adidas Sweatpants',
     price: 149,
-    category: "Sportswear",
-    gender: "Male",
-    brand: "Adidas",
-    img: "./img/shoe.jpg",
+    category: 'Sportswear',
+    gender: 'Male',
+    brand: 'Adidas',
+    img: './img/shoe.jpg',
   },
   {
     id: 9,
-    name: "Adidas Sweatpants",
+    name: 'Adidas Sweatpants',
     price: 139,
-    category: "Sportswear",
-    gender: "Male",
-    brand: "Rebook",
-    img: "./img/shoe.jpg",
+    category: 'Sportswear',
+    gender: 'Male',
+    brand: 'Rebook',
+    img: './img/shoe.jpg',
   },
 ];
-const cartNum = document.querySelector(".cart-length");
-const productContainer = document.querySelector(".grid-container");
-const searchBar = document.querySelector("[data-search]");
+const cartNum = document.querySelector('.cart-length');
+const productContainer = document.querySelector('.grid-container');
+const searchBar = document.querySelector('[data-search]');
 //Variables
 const shoppingCart = [];
 let searchQuery;
 
 //Search Function?
-document.querySelector("[data-start-search]").addEventListener("click", (e) => {
+document.querySelector('[data-start-search]').addEventListener('click', (e) => {
   e.preventDefault();
   searchQuery = searchBar.value;
-  productContainer.innerHTML = "";
+  productContainer.innerHTML = '';
   renderItems();
 });
 
@@ -105,28 +105,28 @@ function renderItems() {
       <img src="${obj.img}" alt="${obj.name} ${obj.gender}" srcset="">
       <p class=${obj.id}>${obj.name}</p>
       <p>${obj.price}</p>
-      <a href="#">Details</a><button data-buy data-id=${obj.id}>Buy</button>
+      <div class='details'>Click me for details!</div><button data-buy data-id=${obj.id}>Buy</button>
       </div>`;
     });
 }
 
-// Create Product HTML-templae when on product page
-if (window.location.pathname.includes("/product-page.html")) {
-  console.log("You are on Product Page, loading products.");
+// Create Product HTML-template when on product page
+if (window.location.pathname.includes('/product-page.html')) {
+  console.log('You are on Product Page, loading products.');
   renderItems();
 } else {
-  console.log("Your are not on Product Page");
+  console.log('Your are not on Product Page');
 }
 
 //Selected Grid Items to implement for later usage
-const productItems = document.querySelectorAll(".grid-item");
-const buyButtons = document.querySelectorAll("[data-buy]");
+const productItems = document.querySelectorAll('.grid-item');
+const buyButtons = document.querySelectorAll('[data-buy]');
 
 //For each div with product information, add a event
 buyButtons.forEach((item) => {
-  item.addEventListener("click", () => {
+  item.addEventListener('click', () => {
     const found = proDatabase.find(
-      (el) => el.id == item.getAttribute("data-id")
+      (el) => el.id == item.getAttribute('data-id')
     );
     console.log(found);
     shoppingCart.push(found);
@@ -135,9 +135,9 @@ buyButtons.forEach((item) => {
 });
 
 productItems.forEach((item) => {
-  item.addEventListener("click", () => {
+  item.addEventListener('click', () => {
     const found = proDatabase.find(
-      (el) => el.id == item.getAttribute("data-id")
+      (el) => el.id == item.getAttribute('data-id')
     );
     console.log(found);
   });
