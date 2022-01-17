@@ -89,12 +89,12 @@ const shoppingCart = [];
 let searchQuery;
 
 //Search Function?
-document.querySelector('[data-start-search]').addEventListener('click', (e) => {
-  e.preventDefault();
-  searchQuery = searchBar.value;
-  productContainer.innerHTML = '';
-  renderItems();
-});
+// document.querySelector('[data-start-search]').addEventListener('click', (e) => {
+//   e.preventDefault();
+//   searchQuery = searchBar.value;
+//   productContainer.innerHTML = '';
+//   renderItems();
+// });
 
 function renderItems() {
   proDatabase
@@ -134,9 +134,8 @@ buyButtons.forEach((item) => {
   });
 });
 
-//Open modal
+//Open modal function
 const modalContainer = document.querySelector('.modal-container');
-
 productItems.forEach((item) => {
   item.addEventListener('click', () => {
     const found = proDatabase.find(
@@ -147,8 +146,16 @@ productItems.forEach((item) => {
   });
 });
 
-//Close modal
+//Close modal button function
 const modalCloseBTN = document.querySelector('.close-modal');
-modalCloseBTN.addEventListener('click', () => {
+modalCloseBTN.addEventListener('click', (e) => {
   modalContainer.classList.toggle('active');
+});
+
+/* Close modal button function if pressing outside the modal */
+document.getElementById('parent').addEventListener('click', (e) => {
+  if (e.target !== e.currentTarget) console.log('child clicked');
+  else {
+    modalContainer.classList.toggle('active');
+  }
 });
