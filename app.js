@@ -143,7 +143,8 @@ productItems.forEach((item) => {
       (el) => el.id == item.getAttribute('data-id')
     );
     modalContainer.classList.toggle('active');
-    document.getElementById('child').innerHTML = `<p>${found['name']}</p>`;
+    document.getElementById('child').innerHTML = `
+    <div class='modal-content'><img src="${found['img']}"</div><p>${found['name']}</p>`;
   });
 });
 
