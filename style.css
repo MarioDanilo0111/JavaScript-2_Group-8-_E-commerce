@@ -129,7 +129,7 @@
 }
 
 .modal {
-  display: none;
+  display: block;
   z-index: 1;
   position: absolute;
   width: 80%;
@@ -142,7 +142,6 @@
   border-radius: 5px;
 }
 
-.modal.active,
-.modal.active {
+.modal-container.active {
   display: block;
 }
