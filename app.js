@@ -134,7 +134,7 @@ buyButtons.forEach((item) => {
   });
 });
 
-//Open modal function
+//Open modal function and populate modal
 const modalContainer = document.querySelector('.modal-container');
 
 productItems.forEach((item) => {
@@ -142,8 +142,8 @@ productItems.forEach((item) => {
     const found = proDatabase.find(
       (el) => el.id == item.getAttribute('data-id')
     );
-    console.log(found.title);
     modalContainer.classList.toggle('active');
+    document.getElementById('child').innerHTML = `<p>${found['name']}</p>`;
   });
 });
 
