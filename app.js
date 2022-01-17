@@ -134,11 +134,21 @@ buyButtons.forEach((item) => {
   });
 });
 
+//Open modal
+const modalContainer = document.querySelector('.modal-container');
+
 productItems.forEach((item) => {
   item.addEventListener('click', () => {
     const found = proDatabase.find(
       (el) => el.id == item.getAttribute('data-id')
     );
     console.log(found);
+    modalContainer.classList.toggle('active');
   });
+});
+
+//Close modal
+const modalCloseBTN = document.querySelector('.close-modal');
+modalCloseBTN.addEventListener('click', () => {
+  modalContainer.classList.toggle('active');
 });
