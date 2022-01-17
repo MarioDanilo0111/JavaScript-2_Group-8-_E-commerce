@@ -89,12 +89,12 @@ const shoppingCart = [];
 let searchQuery;
 
 //Search Function?
-// document.querySelector('[data-start-search]').addEventListener('click', (e) => {
-//   e.preventDefault();
-//   searchQuery = searchBar.value;
-//   productContainer.innerHTML = '';
-//   renderItems();
-// });
+document.querySelector('[data-start-search]').addEventListener('click', (e) => {
+  e.preventDefault();
+  searchQuery = searchBar.value;
+  productContainer.innerHTML = '';
+  renderItems();
+});
 
 function renderItems() {
   proDatabase
@@ -136,12 +136,13 @@ buyButtons.forEach((item) => {
 
 //Open modal function
 const modalContainer = document.querySelector('.modal-container');
+
 productItems.forEach((item) => {
   item.addEventListener('click', () => {
     const found = proDatabase.find(
       (el) => el.id == item.getAttribute('data-id')
     );
-    console.log(found);
+    console.log(found.title);
     modalContainer.classList.toggle('active');
   });
 });
