@@ -42,6 +42,7 @@
   position: fixed;
   width: 100%;
   z-index: 40;
+  top: 0;
 }
 
 /* Added space-around on navbar content */
@@ -169,6 +170,10 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.modal-content {
+  border: none;
 }
 
 .modal {

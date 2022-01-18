@@ -110,6 +110,8 @@ function renderItems() {
     });
 }
 
+// Todo: Hide searchbar when not on product page
+
 // Create Product HTML-template when on product page
 if (window.location.pathname.includes('/product-page.html')) {
   console.log('You are on Product Page, loading products.');
