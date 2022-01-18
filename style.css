@@ -26,6 +26,10 @@
   border: 1px solid #ced4da;
   background-color: white;
 }
+.navbar.navbar-expand-lg {
+  position: fixed;
+  width: 100%;
+}
 
 /* Added space-around on navbar content */
 .navbar-nav {
