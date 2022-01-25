@@ -171,7 +171,7 @@
   display: none;
 }
 
-.details-content.active {
+.grid-item.active .details-content {
   position: absolute;
   display: flex;
   flex-direction: column;

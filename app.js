@@ -114,7 +114,7 @@ function renderItems() {
       <p class=${obj.id}>${obj.name}</p>
       <p>${obj.price}</p>
       <button class='details' data-details>Details</button><button data-buy data-id=${obj.id}>Buy</button>
-      <div class='details-content' data-id=${obj.id}><span>${obj.description}</span><p>Click to close</p></div>
+      <div class='details-content' data-id=${obj.id}><span>${obj.description}</span><p data-close-details>Click to close</p></div>
       </div>
       `;
     });
@@ -143,10 +143,26 @@ buyButtons.forEach((item) => {
   });
 });
 
-const toggleDetails = document.querySelectorAll('[data-details]');
-toggleDetails.forEach((item) => {
+const openDetails = document.querySelectorAll('[data-details]');
+const closeDetails = document.querySelectorAll('[data-close-details');
+/* toggleDetails.forEach((item) => {
   item.addEventListener('click', () => {
     console.log(item);
     //if statement to toggle class .active on product that has the same ID as the btn?
   });
 });
+ */
+
+//Only works once
+for (const oDetail of openDetails) {
+  oDetail.addEventListener('click', function (e) {
+    console.log(e);
+    e.path[1].classList.toggle('active');
+    for (const cDetail of closeDetails) {
+      cDetail.addEventListener('click', (e) => {
+        console.log(e);
+        e.path[2].classList.toggle('active');
+      });
+    }
+  });
+}
