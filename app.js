@@ -7,6 +7,7 @@ const proDatabase = [
     gender: 'unisex',
     brand: 'Nike',
     img: './img/shoe.jpg',
+    description: 'Nike T-shirt that is nice to use when training',
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const proDatabase = [
     gender: 'Male',
     brand: 'Adidas',
     img: './img/shoe.jpg',
+    description: 'Nice sweatpands to use when training',
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const proDatabase = [
     gender: 'unisex',
     brand: 'Nike',
     img: './img/shoe.jpg',
+    description: 'Nice shoes to use for training',
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const proDatabase = [
     gender: 'Male',
     brand: 'Adidas',
     img: './img/shoe.jpg',
+    description: 'Nice sweatpands to use when training',
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const proDatabase = [
     gender: 'unisex',
     brand: 'Nike',
     img: './img/shoe.jpg',
+    description: 'Nike T-shirt that is nice to use when training',
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ const proDatabase = [
     gender: 'Male',
     brand: 'Adidas',
     img: './img/shoe.jpg',
+    description: 'Nice sweatpands to use when training',
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ const proDatabase = [
     gender: 'unisex',
     brand: 'Nike',
     img: './img/shoe.jpg',
+    description: 'Nike T-shirt that is nice to use when training',
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ const proDatabase = [
     gender: 'Male',
     brand: 'Adidas',
     img: './img/shoe.jpg',
+    description: 'Nice sweatpands to use when training',
   },
   {
     id: 9,
@@ -79,12 +87,12 @@ const proDatabase = [
     gender: 'Male',
     brand: 'Rebook',
     img: './img/shoe.jpg',
+    description: 'Nice sweatpands to use when training',
   },
 ];
 const cartNum = document.querySelector('.cart-length');
 const productContainer = document.querySelector('.grid-container');
 const searchBar = document.querySelector('[data-search]');
-//Variables
 const shoppingCart = [];
 let searchQuery;
 
@@ -105,12 +113,12 @@ function renderItems() {
       <img src="${obj.img}" alt="${obj.name} ${obj.gender}" srcset="">
       <p class=${obj.id}>${obj.name}</p>
       <p>${obj.price}</p>
-      <div class='details'>Click me for details!</div><button data-buy data-id=${obj.id}>Buy</button>
-      </div>`;
+      <button class='details' data-details>Details</button><button data-buy data-id=${obj.id}>Buy</button>
+      <div class='details-content' data-id=${obj.id}><span>${obj.description}</span><p>Click to close</p></div>
+      </div>
+      `;
     });
 }
-
-// Todo: Hide searchbar when not on product page
 
 // Create Product HTML-template when on product page
 if (window.location.pathname.includes('/product-page.html')) {
@@ -119,10 +127,15 @@ if (window.location.pathname.includes('/product-page.html')) {
 } else {
   console.log('Your are not on Product Page');
 }
-
-//Selected Grid Items to implement for later usage
+/* Moving these breaks the code. */
 const productItems = document.querySelectorAll('.grid-item');
 const buyButtons = document.querySelectorAll('[data-buy]');
+const toggleDetails = document.querySelectorAll('.details-content');
+toggleDetails.forEach((item) => {
+  item.addEventListener('click', () => {
+    console.log(item);
+  });
+});
 
 //For each div with product information, add a event
 buyButtons.forEach((item) => {
@@ -134,32 +147,4 @@ buyButtons.forEach((item) => {
     shoppingCart.push(found);
     cartNum.innerHTML = `${shoppingCart.length}`;
   });
-});
-
-//Open modal function and populate modal
-const modalContainer = document.querySelector('.modal-container');
-
-productItems.forEach((item) => {
-  item.addEventListener('click', () => {
-    const found = proDatabase.find(
-      (el) => el.id == item.getAttribute('data-id')
-    );
-    modalContainer.classList.toggle('active');
-    document.getElementById('child').innerHTML = `
-    <div class='modal-content'><img src="${found['img']}"</div><p>${found['name']}</p>`;
-  });
-});
-
-//Close modal button function
-const modalCloseBTN = document.querySelector('.close-modal');
-modalCloseBTN.addEventListener('click', (e) => {
-  modalContainer.classList.toggle('active');
-});
-
-/* Close modal button function if pressing outside the modal */
-document.getElementById('parent').addEventListener('click', (e) => {
-  if (e.target !== e.currentTarget) console.log('child clicked');
-  else {
-    modalContainer.classList.toggle('active');
-  }
 });
