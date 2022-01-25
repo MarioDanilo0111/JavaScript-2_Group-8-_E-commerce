@@ -130,12 +130,6 @@ if (window.location.pathname.includes('/product-page.html')) {
 /* Moving these breaks the code. */
 const productItems = document.querySelectorAll('.grid-item');
 const buyButtons = document.querySelectorAll('[data-buy]');
-const toggleDetails = document.querySelectorAll('.details-content');
-toggleDetails.forEach((item) => {
-  item.addEventListener('click', () => {
-    console.log(item);
-  });
-});
 
 //For each div with product information, add a event
 buyButtons.forEach((item) => {
@@ -146,5 +140,13 @@ buyButtons.forEach((item) => {
     console.log(found);
     shoppingCart.push(found);
     cartNum.innerHTML = `${shoppingCart.length}`;
+  });
+});
+
+const toggleDetails = document.querySelectorAll('[data-details]');
+toggleDetails.forEach((item) => {
+  item.addEventListener('click', () => {
+    console.log(item);
+    //if statement to toggle class .active on product that has the same ID as the btn?
   });
 });
