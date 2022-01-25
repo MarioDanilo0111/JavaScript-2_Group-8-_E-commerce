@@ -43,6 +43,7 @@
   width: 100%;
   z-index: 40;
   top: 0;
+  right: 0;
 }
 
 /* Added space-around on navbar content */
