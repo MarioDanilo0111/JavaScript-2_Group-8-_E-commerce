@@ -141,6 +141,7 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
       console.log(found);
       shoppingCart.push(found);
       cartNum.innerHTML = `${shoppingCart.length}`;
+      lStorage();
     });
   });
 });
@@ -179,7 +180,6 @@ if (window.location.pathname.includes('/product-page.html')) {
 const productItems = document.querySelectorAll('.grid-item');
 const buyButtons = document.querySelectorAll('[data-buy]');
 
-//For each div with product information, add a event
 buyButtons.forEach((item) => {
   item.addEventListener('click', () => {
     const found = proDatabase.find(
@@ -188,8 +188,14 @@ buyButtons.forEach((item) => {
     console.log(found);
     shoppingCart.push(found);
     cartNum.innerHTML = `${shoppingCart.length}`;
+    lStorage();
   });
 });
+
+function lStorage() {
+  window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
+  console.log(window.localStorage.getItem('cart'));
+}
 
 // Open and close details
 const openDetails = document.querySelectorAll('[data-details]');
