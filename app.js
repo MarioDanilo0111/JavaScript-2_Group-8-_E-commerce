@@ -144,9 +144,15 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
     });
   });
 });
+
+// Render items function
 function renderItems() {
   proDatabase
-    .filter((item) => item.name.toLowerCase().match(searchQuery))
+    .filter(
+      (item) =>
+        item.name.toLowerCase().match(searchQuery) ||
+        item.category.toLowerCase().match(searchQuery)
+    )
     .forEach((obj) => {
       productContainer.innerHTML += `
       <div class="grid-item" data-id=${obj.id}>

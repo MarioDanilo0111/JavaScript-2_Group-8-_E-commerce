@@ -192,6 +192,7 @@
 [data-start-search] {
   display: block;
   position: fixed;
+  height: 40px;
   right: 50%;
   transform: translateX(45%);
 }
