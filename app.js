@@ -99,10 +99,14 @@ const proDatabase = [
       'Visa alla vilket lag du håller på med jackan Paris Saint-Germain.Mjukt, svettavvisande material håller dig varm och torr både på avbytarbänken och i stan.',
   },
 ];
+const btn = document.querySelector('[data-clear-local]');
 const cartNum = document.querySelector('.cart-length');
 const productContainer = document.querySelector('.grid-container');
 const searchBar = document.querySelector('[data-search]');
 let shoppingCart = [];
+if (JSON.parse(localStorage.getItem('cart')) !== null) {
+  shoppingCart = JSON.parse(localStorage.getItem('cart'));
+}
 let searchQuery;
 
 /* Search function */
@@ -185,38 +189,22 @@ buyButtons.forEach((item) => {
       (el) => el.id == item.getAttribute('data-id')
     );
     console.log(found);
-    if()
-
-
-    if (shoppingCart.length == '' || undefined) {
-      shoppingCart = JSON.parse(localStorage.getItem('cart'));
-    } else if(shoppingCart.length >= 1) {
-      
-    }
-    
-    else {
-      shoppingCart.push(found);
-      window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
-    } //Make another ifstatement, if localstorage is empty, add the object to the local storage
-
-    /* If shoppingCart is empty, take data from local storage, convert and add to array. If not empty, continute to add to it. */
-    /* issue here is that array is never empty */
-    /*     if (JSON.parse(localStorage.getItem('cart')).length == undefined) {
-      console.log(empty);
-    } else {
-      console.log(JSON.parse(localStorage.getItem('cart')).length);
-    } */
+    shoppingCart.push(found);
+    window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
+    cartNum.innerHTML = shoppingCart.length;
   });
 });
+cartNum.innerHTML = shoppingCart.length;
 
-//Convert l-storage 'cart' to regular arrObj
-/* function convertLStorageShowLength() {
-  console.log(JSON.parse(localStorage.getItem('cart')));
+/* window.onload = cartNum.innerHTML = shoppingCart.length; */
+btn.addEventListener('click', clearLocal);
+function clearLocal() {
+  window.localStorage.clear();
+  console.log('Local storage has been cleared');
+  console.log(localStorage);
+  shoppingCart = [];
+  cartNum.innerHTML = shoppingCart.length;
 }
-function lStorage() {
-  return window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
-} */
-//When page loads, set arrLength and output the value
 
 // Open and close details
 const openDetails = document.querySelectorAll('[data-details]');
