@@ -205,3 +205,39 @@
   justify-content: space-between;
   padding: 10px;
 }
+
+.shoppingCart-list-container {
+  position: absolute;
+  max-width: 250px;
+  max-height: 500px;
+  height: 500px;
+  width: 400px;
+  border: 1px solid red;
+  right: 0;
+  z-index: 50;
+  top: -500px;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.shoppingCart-list-container.active {
+  display: flex;
+  top: 68px;
+}
+
+.cartLength {
+  pointer-events: none;
+}
+
+[data-shoppingCart] {
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-right: 5px;
+}
+
+[data-shoppingCart]:hover {
+  transform: rotateY(360deg);
+  color: red;
+}

@@ -99,6 +99,7 @@ const proDatabase = [
       'Visa alla vilket lag du håller på med jackan Paris Saint-Germain.Mjukt, svettavvisande material håller dig varm och torr både på avbytarbänken och i stan.',
   },
 ];
+const shopCartList = document.querySelector('[data-shoppingCart]');
 const btn = document.querySelector('[data-clear-local]');
 const cartNum = document.querySelector('.cart-length');
 const productContainer = document.querySelector('.grid-container');
@@ -228,3 +229,8 @@ for (const cDetail of closeDetails) {
     detailsContent.classList.toggle('active');
   });
 }
+
+/* ShoppingCartListShow and populate */
+shopCartList.addEventListener('click', (e) => {
+  console.log(e.target);
+});
