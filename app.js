@@ -99,7 +99,11 @@ const proDatabase = [
       'Visa alla vilket lag du håller på med jackan Paris Saint-Germain.Mjukt, svettavvisande material håller dig varm och torr både på avbytarbänken och i stan.',
   },
 ];
+const tPrice = document.querySelector('[totalPrice]');
 const shopCartList = document.querySelector('[data-shoppingCart]');
+const shoppingCartContainer = document.querySelector(
+  '.shoppingCart-list-container'
+);
 const btn = document.querySelector('[data-clear-local]');
 const cartNum = document.querySelector('.cart-length');
 const productContainer = document.querySelector('.grid-container');
@@ -145,7 +149,8 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
       );
       console.log(found);
       shoppingCart.push(found);
-      lStorage();
+      window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
+      cartNum.innerHTML = shoppingCart.length;
     });
   });
 });
@@ -205,6 +210,7 @@ function clearLocal() {
   console.log(localStorage);
   shoppingCart = [];
   cartNum.innerHTML = shoppingCart.length;
+  shoppingCartContainer.innerHTML = '';
 }
 
 // Open and close details
@@ -231,6 +237,18 @@ for (const cDetail of closeDetails) {
 }
 
 /* ShoppingCartListShow and populate */
-shopCartList.addEventListener('click', (e) => {
-  console.log(e.target);
+shopCartList.addEventListener('click', () => {
+  shoppingCartContainer.classList.toggle('active');
 });
+
+function addItemsShoppingCartDisplay() {
+  shoppingCart.map((item) => {
+    shoppingCartContainer.innerHTML += `
+    <div>
+    <p>${item.name}</p>
+    <p>Pris ${item.price}</p>
+    </div>
+
+    `;
+  });
+}

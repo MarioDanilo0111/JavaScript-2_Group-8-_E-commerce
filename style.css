@@ -207,14 +207,14 @@
 }
 
 .shoppingCart-list-container {
-  position: absolute;
+  position: fixed;
   max-width: 250px;
   max-height: 500px;
   height: 500px;
   width: 400px;
   border: 1px solid red;
   right: 0;
-  z-index: 50;
+  z-index: 39;
   top: -500px;
   background-color: white;
   border-bottom-left-radius: 10px;
@@ -224,6 +224,16 @@
 .shoppingCart-list-container.active {
   display: flex;
   top: 68px;
+  flex-direction: column;
+  text-align: center;
+}
+[totalPrice] {
+  position: absolute;
+  top: calc(100% - 60px);
+  width: 100%;
+  border-top: red 1px solid;
+  height: 60px;
+  border-bottom-left-radius: 10px;
 }
 
 .cartLength {
