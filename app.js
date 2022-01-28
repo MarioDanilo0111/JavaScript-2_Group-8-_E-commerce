@@ -102,7 +102,7 @@ const proDatabase = [
 const cartNum = document.querySelector('.cart-length');
 const productContainer = document.querySelector('.grid-container');
 const searchBar = document.querySelector('[data-search]');
-const shoppingCart = [];
+let shoppingCart = [];
 let searchQuery;
 
 /* Search function */
@@ -140,7 +140,6 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
       );
       console.log(found);
       shoppingCart.push(found);
-      cartNum.innerHTML = `${shoppingCart.length}`;
       lStorage();
     });
   });
@@ -186,16 +185,31 @@ buyButtons.forEach((item) => {
       (el) => el.id == item.getAttribute('data-id')
     );
     console.log(found);
-    shoppingCart.push(found);
-    cartNum.innerHTML = `${shoppingCart.length}`;
-    lStorage();
+    if (shoppingCart.length == '' || undefined) {
+      shoppingCart = JSON.parse(localStorage.getItem('cart'));
+    } else {
+      shoppingCart.push(found);
+      window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
+    } //Make another ifstatement, if localstorage is empty, add the object to the local storage
+
+    /* If shoppingCart is empty, take data from local storage, convert and add to array. If not empty, continute to add to it. */
+    /* issue here is that array is never empty */
+    /*     if (JSON.parse(localStorage.getItem('cart')).length == undefined) {
+      console.log(empty);
+    } else {
+      console.log(JSON.parse(localStorage.getItem('cart')).length);
+    } */
   });
 });
 
-function lStorage() {
-  window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
-  console.log(window.localStorage.getItem('cart'));
+//Convert l-storage 'cart' to regular arrObj
+/* function convertLStorageShowLength() {
+  console.log(JSON.parse(localStorage.getItem('cart')));
 }
+function lStorage() {
+  return window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
+} */
+//When page loads, set arrLength and output the value
 
 // Open and close details
 const openDetails = document.querySelectorAll('[data-details]');
