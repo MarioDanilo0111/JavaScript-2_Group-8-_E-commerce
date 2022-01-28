@@ -185,9 +185,16 @@ buyButtons.forEach((item) => {
       (el) => el.id == item.getAttribute('data-id')
     );
     console.log(found);
+    if()
+
+
     if (shoppingCart.length == '' || undefined) {
       shoppingCart = JSON.parse(localStorage.getItem('cart'));
-    } else {
+    } else if(shoppingCart.length >= 1) {
+      
+    }
+    
+    else {
       shoppingCart.push(found);
       window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
     } //Make another ifstatement, if localstorage is empty, add the object to the local storage
