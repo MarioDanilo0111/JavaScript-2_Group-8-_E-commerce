@@ -219,6 +219,7 @@
   background-color: white;
   border-bottom-left-radius: 10px;
   transition: all 0.2s ease-in-out;
+  overflow: auto;
 }
 
 .shoppingCart-list-container.active {
@@ -229,11 +230,13 @@
 }
 [totalPrice] {
   position: absolute;
+  display: block;
   top: calc(100% - 60px);
   width: 100%;
   border-top: red 1px solid;
   height: 60px;
   border-bottom-left-radius: 10px;
+  z-index: 39;
 }
 
 .cartLength {

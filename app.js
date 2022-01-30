@@ -245,11 +245,15 @@ shopCartList.addEventListener('click', () => {
 
 function addItemsShoppingCartDisplay() {
   shoppingCartContainer.innerHTML = '';
+  let sum = 0;
   shoppingCart.map((item) => {
     shoppingCartContainer.innerHTML += `
-    <div>${item.name}</div>
-    <div>${item.price}</div>
-    <br>
+    <div><div>${item.name}</div>
+    <div style='border-bottom: 1px solid black'>${item.price}</div> </div>
+
+  
     `;
+    sum += item.price;
   });
+  console.log(sum);
 }
