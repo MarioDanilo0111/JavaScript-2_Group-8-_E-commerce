@@ -13,7 +13,7 @@
     />
     <!-- Custom CSS Link -->
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Products</title>
   </head>
   <body>
     <!-- Navbar -->
@@ -23,7 +23,15 @@
         id="custom-style"
       >
         <div class="container-fluid nav-container">
-          <a class="navbar-brand" href="index.html">YeetBay</a>
+          <a class="navbar-brand" href="index.html">NikeOutlet</a>
+          <input
+          type="search"
+          placeholder="Search"
+          data-start-search data-search
+        />
+        <script src="./scriptJS.js"></script>
+        <button data-clear-local style="width:50px;text-align:center;" >Clear Local</button>
+    
           <button
             class="navbar-toggler"
             type="button"
@@ -52,29 +60,22 @@
                 <a class="nav-link" href="#">Contact</a>
               </li>
               <form class="d-flex">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                  data-search
-                />
-                <button class="btn-nav-search" type="submit" data-start-search>
-                  Search
-                </button>
-              </form>
               <li class="nav-item">
-                <a class="nav-link" href="#"
-                  >Shopping Cart <span class="cart-length"></span
-                ></a>
+                <a class="nav-link" 
+                  ><span data-shoppingCart>Shopping Cart </span><span class="cart-length"></span
+                    ></a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
+    <div class="shoppingCart-list-container">
+      <div totalPrice></div>
+    </div>
 
     <!-- END Navbar END -->
+
 
     <!-- Content Generated with JS -->
     <div class="custom-width-wrapper">
