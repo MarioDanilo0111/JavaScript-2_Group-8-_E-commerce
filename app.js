@@ -108,13 +108,15 @@ const btn = document.querySelector('[data-clear-local]');
 const cartNum = document.querySelector('.cart-length');
 const productContainer = document.querySelector('.grid-container');
 const searchBar = document.querySelector('[data-search]');
+
+/* Shopping cart is set to empty array. If localStorage is not "empty, set the shoppingCart to localStorage" */
 let shoppingCart = [];
 if (JSON.parse(localStorage.getItem('cart')) !== null) {
   shoppingCart = JSON.parse(localStorage.getItem('cart'));
 }
 let searchQuery;
 
-/* Search function */
+/* Search function - Had to add event listeners to the filtered items for them to work. */
 document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
   e.preventDefault();
   searchQuery = searchBar.value;
@@ -123,6 +125,8 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
   const openDetails = document.querySelectorAll('[data-details]');
   const closeDetails = document.querySelectorAll('[data-close-details');
   const buyButtons = document.querySelectorAll('[data-buy]');
+
+  /* Added event listener to details button to open */
   for (const oDetail of openDetails) {
     oDetail.addEventListener('click', function (e) {
       const detailsContent = document.querySelector(
@@ -132,6 +136,7 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
       detailsContent.classList.toggle('active');
     });
   }
+  /* Added event listener to details button to close */
   for (const cDetail of closeDetails) {
     cDetail.addEventListener('click', (e) => {
       console.log(e.target);
@@ -142,6 +147,7 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
       detailsContent.classList.toggle('active');
     });
   }
+  /* Buy function */
   buyButtons.forEach((item) => {
     item.addEventListener('click', () => {
       const found = proDatabase.find(
@@ -203,7 +209,7 @@ buyButtons.forEach((item) => {
 });
 cartNum.innerHTML = shoppingCart.length;
 
-/* window.onload = cartNum.innerHTML = shoppingCart.length; */
+/* Clear LocalStorage and sets shoppingCart to empty array */
 btn.addEventListener('click', clearLocal);
 function clearLocal() {
   window.localStorage.clear();
@@ -250,8 +256,6 @@ function addItemsShoppingCartDisplay() {
     shoppingCartContainer.innerHTML += `
     <div><div>${item.name}</div>
     <div style='border-bottom: 1px solid black'>${item.price}</div> </div>
-
-  
     `;
     sum += item.price;
   });

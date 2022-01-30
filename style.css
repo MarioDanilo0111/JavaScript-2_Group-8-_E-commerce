@@ -3,6 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'poppins', sans-serif;
 }
 
 /* --- General Rules --- */
@@ -251,6 +252,74 @@
 }
 
 [data-shoppingCart]:hover {
-  transform: rotateY(360deg);
   color: red;
+}
+
+/* Contact page */
+
+.hero.contact {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), #3551b5),
+    url(img/drops.jpeg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact.form {
+  width: 90%;
+  max-width: 600px;
+}
+.hero.contact .input-group {
+  margin-bottom: 30px;
+  position: relative;
+}
+.hero.contact input,
+.hero.contact textarea {
+  width: 100%;
+  padding: 10px;
+  outline: 0;
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
+  font-size: 15px;
+}
+.hero.contact label {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  color: #fff;
+  cursor: text;
+  transition: 0.2s;
+}
+
+.btn-contact {
+  padding: 10px 0;
+  color: #fff;
+  outline: none;
+  background: transparent;
+  border: 1px solid #fff;
+  width: 100%;
+  cursor: pointer;
+}
+.hero.contact input:focus ~ label,
+.hero.contact input:valid ~ label,
+.hero.contact textarea:focus ~ label,
+.hero.contact textarea:valid ~ label {
+  top: -35px;
+  font-size: 14px;
+}
+.hero.contact .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero.contact .row .input-group {
+  flex-basis: 48%;
+}
+@media all and (max-width: 480px) {
 }
