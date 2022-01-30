@@ -198,6 +198,7 @@ buyButtons.forEach((item) => {
     shoppingCart.push(found);
     window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
     cartNum.innerHTML = shoppingCart.length;
+    addItemsShoppingCartDisplay(found);
   });
 });
 cartNum.innerHTML = shoppingCart.length;
@@ -239,16 +240,16 @@ for (const cDetail of closeDetails) {
 /* ShoppingCartListShow and populate */
 shopCartList.addEventListener('click', () => {
   shoppingCartContainer.classList.toggle('active');
+  addItemsShoppingCartDisplay();
 });
 
 function addItemsShoppingCartDisplay() {
+  shoppingCartContainer.innerHTML = '';
   shoppingCart.map((item) => {
     shoppingCartContainer.innerHTML += `
-    <div>
-    <p>${item.name}</p>
-    <p>Pris ${item.price}</p>
-    </div>
-
+    <div>${item.name}</div>
+    <div>${item.price}</div>
+    <br>
     `;
   });
 }
