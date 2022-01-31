@@ -280,7 +280,6 @@ function addItemsShoppingCartDisplay() {
     for (const removeItem of cartBtn) {
       removeItem.addEventListener('click', (event) => {
         shoppingCart.splice(event.target.getAttribute('removeBtn'), 1);
-        console.dir(event.target);
         console.log(event.target.getAttribute('removeBtn'));
         window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
         cartNum.innerHTML = shoppingCart.length;
@@ -289,30 +288,3 @@ function addItemsShoppingCartDisplay() {
     }
   });
 }
-
-/* function addItemsShoppingCartDisplay() {
-  shoppingCartContainer.innerHTML = '';
-  shoppingCart.map((item, index) => {
-    shoppingCartContainer.innerHTML += `
-    <div cart-item=${item.id} index=${index}><div>${item.name}</div>
-    <button prod-id=${item.id} removeBtn>Remove item</button>
-    <div style='border-bottom: 1px solid black'>${item.price}</div> 
-    </div>
-    `;
-    const cartBtn = document.querySelectorAll('[removeBtn]');
-    for (const removeItem of cartBtn) {
-      removeItem.addEventListener('click', (event) => {
-        // console.dir(event.target.getAttribute('prod-id'));
-        // console.dir(event.target['parentNode']);
-        console.dir(event.target['parentNode']['attributes']['index']['value']);
-        let val = event.target['parentNode']['attributes']['index']['value'];
-        //removes parent node.
-        event.target['parentNode'].remove();
-        shoppingCart.splice(val, 1);
-        window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
-        cartNum.innerHTML = shoppingCart.length;
-        addItemsShoppingCartDisplay();
-      });
-    }
-  });
-} */
