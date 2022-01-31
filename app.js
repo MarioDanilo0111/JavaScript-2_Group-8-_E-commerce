@@ -1,3 +1,13 @@
+/* const testDB = fetch('./productDB.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    return data;
+  });
+ */
+
+/* Todo: Add function to delete specific product in cart */
 const proDatabase = [
   {
     id: 1,
@@ -147,7 +157,7 @@ document.querySelector('[data-start-search]').addEventListener('keyup', (e) => {
       detailsContent.classList.toggle('active');
     });
   }
-  /* Buy function */
+  /* Buy function - Adds event for each buy-btn. Checks btn-id and gets the object from the database(found). */
   buyButtons.forEach((item) => {
     item.addEventListener('click', () => {
       const found = proDatabase.find(
@@ -167,7 +177,8 @@ function renderItems() {
     .filter(
       (item) =>
         item.name.toLowerCase().match(searchQuery) ||
-        item.category.toLowerCase().match(searchQuery)
+        item.category.toLowerCase().match(searchQuery) ||
+        item.price.toString().match(searchQuery)
     )
     .forEach((obj) => {
       productContainer.innerHTML += `
@@ -195,6 +206,7 @@ if (window.location.pathname.includes('/product-page.html')) {
 const productItems = document.querySelectorAll('.grid-item');
 const buyButtons = document.querySelectorAll('[data-buy]');
 
+// Adds event for each buy-btn. Checks btn-id and gets the object from the database(found).
 buyButtons.forEach((item) => {
   item.addEventListener('click', () => {
     const found = proDatabase.find(
@@ -209,7 +221,7 @@ buyButtons.forEach((item) => {
 });
 cartNum.innerHTML = shoppingCart.length;
 
-/* Clear LocalStorage and sets shoppingCart to empty array */
+/* Clear LocalStorage and sets shoppingCart to empty array. Removes innerHTML that shows items in cart */
 btn.addEventListener('click', clearLocal);
 function clearLocal() {
   window.localStorage.clear();
@@ -223,8 +235,11 @@ function clearLocal() {
 // Open and close details
 const openDetails = document.querySelectorAll('[data-details]');
 const closeDetails = document.querySelectorAll('[data-close-details');
+
+// iterates over HTML NoteList, oDetail is the element
 for (const oDetail of openDetails) {
   oDetail.addEventListener('click', function (e) {
+    //Targets specific div by checking the data-id of the button you pressed to be the same as 'details-content' and toggles it to be active.
     const detailsContent = document.querySelector(
       `[details-content='${oDetail.getAttribute('data-id')}']`
     );
@@ -232,9 +247,11 @@ for (const oDetail of openDetails) {
     detailsContent.classList.toggle('active');
   });
 }
+// iterates over HTML NoteList, cDetail is the element
 for (const cDetail of closeDetails) {
   cDetail.addEventListener('click', (e) => {
     console.log(e.target);
+    //Targets specific paragraph by checking the data-id of the button you pressed to be the same as 'details-content' and toggles it to be active.
     const detailsContent = document.querySelector(
       `[details-content='${cDetail.getAttribute('data-id')}']`
     );
@@ -249,15 +266,53 @@ shopCartList.addEventListener('click', () => {
   addItemsShoppingCartDisplay();
 });
 
+/* Function to display items bought  */
 function addItemsShoppingCartDisplay() {
   shoppingCartContainer.innerHTML = '';
-  let sum = 0;
-  shoppingCart.map((item) => {
+  shoppingCart.map((item, index) => {
     shoppingCartContainer.innerHTML += `
-    <div><div>${item.name}</div>
-    <div style='border-bottom: 1px solid black'>${item.price}</div> </div>
+    <div cart-item=${item.id} index=${index}><div>${item.name}</div>
+    <button prod-id=${item.id} removeBtn=${index}>Remove item</button>
+    <div style='border-bottom: 1px solid black'>${item.price}</div> 
+    </div>
     `;
-    sum += item.price;
+    const cartBtn = document.querySelectorAll('[removeBtn]');
+    for (const removeItem of cartBtn) {
+      removeItem.addEventListener('click', (event) => {
+        shoppingCart.splice(event.target.getAttribute('removeBtn'), 1);
+        console.dir(event.target);
+        console.log(event.target.getAttribute('removeBtn'));
+        window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
+        cartNum.innerHTML = shoppingCart.length;
+        addItemsShoppingCartDisplay();
+      });
+    }
   });
-  console.log(sum);
 }
+
+/* function addItemsShoppingCartDisplay() {
+  shoppingCartContainer.innerHTML = '';
+  shoppingCart.map((item, index) => {
+    shoppingCartContainer.innerHTML += `
+    <div cart-item=${item.id} index=${index}><div>${item.name}</div>
+    <button prod-id=${item.id} removeBtn>Remove item</button>
+    <div style='border-bottom: 1px solid black'>${item.price}</div> 
+    </div>
+    `;
+    const cartBtn = document.querySelectorAll('[removeBtn]');
+    for (const removeItem of cartBtn) {
+      removeItem.addEventListener('click', (event) => {
+        // console.dir(event.target.getAttribute('prod-id'));
+        // console.dir(event.target['parentNode']);
+        console.dir(event.target['parentNode']['attributes']['index']['value']);
+        let val = event.target['parentNode']['attributes']['index']['value'];
+        //removes parent node.
+        event.target['parentNode'].remove();
+        shoppingCart.splice(val, 1);
+        window.localStorage.setItem('cart', JSON.stringify(shoppingCart));
+        cartNum.innerHTML = shoppingCart.length;
+        addItemsShoppingCartDisplay();
+      });
+    }
+  });
+} */
